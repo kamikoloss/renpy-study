@@ -1,56 +1,81 @@
-﻿# このファイルにはゲームのスクリプトを記述します。
-
-# Ren'Py のスクリプトは、インデント（行頭の空白）によってブロック分けされています。
-# インデントは Tab や Shift + Tab によって調整することができます。
+﻿define c = Character("千冬", color="#88FF88")
 
 
-# まず最初に、ゲームに使うキャラクター（台詞を表示するオブジェクト）を定義します。
-# 一番目のパラメーターは、テキストウィンドウに表示されるキャラクターの名前です。
-# color のパラメーターを追加すると、キャラクターの名前を色付けできます。
+image black = Solid("#000000")
+image white = Solid("#FFFFFF")
 
-define e = Character('Eileen', color="#c8ffc8")
+image chifuyu move:
+    animation
+    "chifuyu smile close"
+    zoom 1.0
+    xalign 0.5
+    yalign 0.1
+    ease_quint 0.5 zoom 1.5
+    ease_quint 0.25 xalign -1.0
+    ease_quint 0.25 xalign 2.0
+    ease_quint 0.25 xalign 0.5
 
 
-# label ステートメント（文）はゲームの処理をまとめてラベル付けします。
-# ラベル間の移動は jump ステートメントか call ステートメントを使います。
+transform center:
+    zoom 1.0
+    xalign 0.5
+    yalign 0.1
 
-# ゲームは start ラベルからスタートします。
+transform left:
+    zoom 1.0
+    xalign -1.0 # 0.5 - 1.5
+    yalign 0.1
+
+transform right:
+    zoom 1.0
+    xalign 2.0 # 0.5 + 1.5
+    yalign 0.1
+
 
 label start:
+    scene black
+    with Dissolve(1.0)
+    scene bg city
+    with Dissolve(1.0)
 
-    # 背景を表示します。デフォルトではプレースホルダー（仮画像）を使用しますが、
-    # images ディレクトリーにファイル（ファイル名は "bg room.png" や "bg room.jpg"）
-    # を追加することで表示できます。
+    "Ren'Py の新しいゲームを作成しました。"
+    "{size=*2}普通に使いづらいんだけど！{/size}"
+    "俺はとうとう耐えられなくなり――"
 
-    scene bg room
+    scene white
+    pause(0.1)
+    scene bg city
+    pause(0.1)
+    scene white
+    pause(0.1)
+    scene bg city
+    pause(0.1)
+    scene white
 
-    # スプライト（立ち絵）を表示します。ここではプレースホルダーを使用していますが、
-    # images ディレクトリーに "eileen happy.png" などと命名したファイルを追加すると
-    # 表示することができます。
+    "ウッ！！！！！！"
 
-    # at ステートメントは画像の表示する位置を調整します。
-    # at center は中央に下揃えで表示します。これは省略しても同じ結果になります。
-    # その他に at right、at left などがデフォルトで定義されています。
+    scene bg city
+    with Dissolve(0.5)
 
-    show eileen happy at center
+    show chifuyu move
+    with Dissolve(0.25)
+    # move (1.25s)が終わるまで待つ
+    pause(1.5)
 
-    # トランジション（画面遷移効果）を使って表示を画面に反映させます。
-    # 台詞を表示するか with None を使うと、トランジション無しで直ちに表示します。
+    show chifuyu smile open
+    with Dissolve(0.5)
 
-    with dissolve
-
-    # 音楽を再生します。
-    # game ディレクトリーに "music.ogg" などのファイルを追加すると再生できます。
-
-    # play music "music.ogg"
-
-    # 以下は台詞を表示します。
-
-    e "Ren'Py の新しいゲームを作成しました。"
-
-    e "ストーリー、画像、音楽を追加すれば、世界にリリースすることができます！"
-
-    # return でゲームを終了します。
+    c "残像だよ。"
 
     return
 
+
+label test:
+    show chifuyu smile close at center
+    with dissolve
+    show chifuyu smile close at left
+    with dissolve
+    show chifuyu smile close at right
+    with dissolve
+    show chifuyu smile open at center
+    with dissolve
