@@ -1,0 +1,28 @@
+# ref. https://github.com/renpy/renpy/blob/master/.gitignore
+
+# Python related files.
+*.pyc
+*.pyo
+*.pyi
+*.egg-info
+
+# Editor/tool files.
+*~
+*.bak
+.gdb_history
+
+# Compiled Ren'Py files.
+*.rpyc
+*.rpyb
+*.rpymc
+
+# Ren'Py log files.
+log.txt
+errors.txt
+traceback.txt
+lint.txt
+
+# Created directories.
+saves/
+tmp/
+cache/
