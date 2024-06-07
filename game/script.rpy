@@ -1,4 +1,5 @@
-define c = Character("千冬", color="#88FF88")
+﻿define c = Character("千冬", color="#88FF88")
+define dis_master = { "master" : Dissolve(0.5) }
 
 
 image black = Solid("#000000")
@@ -64,6 +65,26 @@ label start:
     with Dissolve(0.5)
 
     c "残像だよ。"
+
+    show chifuyu smile close
+    with dis_master
+
+    c "close"
+
+    show chifuyu smile open
+    with dis_master
+
+    c "open"
+
+    show chifuyu smile close
+    with dis_master
+
+    c "close"
+
+    show chifuyu smile open
+    with dis_master
+
+    c "open"
 
     return
 
