@@ -1,19 +1,8 @@
-﻿define c = Character("千冬", color="#88FF88")
+define c = Character("千冬", color="#88FF88")
 
 
 image black = Solid("#000000")
 image white = Solid("#FFFFFF")
-
-image chifuyu move:
-    animation
-    "chifuyu smile close"
-    zoom 1.0
-    xalign 0.5
-    yalign 0.1
-    ease_quint 0.5 zoom 1.5
-    ease_quint 0.25 xalign -1.0
-    ease_quint 0.25 xalign 2.0
-    ease_quint 0.25 xalign 0.5
 
 
 transform center:
@@ -30,6 +19,15 @@ transform right:
     zoom 1.0
     xalign 2.0 # 0.5 + 1.5
     yalign 0.1
+
+transform 高速移動:
+    zoom 1.0
+    xalign 0.5
+    yalign 0.1
+    ease_quint 0.5 zoom 1.5
+    ease_quint 0.25 xalign -1.0
+    ease_quint 0.25 xalign 2.0
+    ease_quint 0.25 xalign 0.5
 
 
 label start:
@@ -57,7 +55,7 @@ label start:
     scene bg city
     with Dissolve(0.5)
 
-    show chifuyu move
+    show chifuyu smile close at 高速移動
     with Dissolve(0.25)
     # move (1.25s)が終わるまで待つ
     pause(1.5)
